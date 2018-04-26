@@ -1,0 +1,10 @@
+body { background-color: #fff; color: #181818; }
+
+.main-button, .small-button { border-radius: 20px; border-color: #226CA6; }
+
+.main-button { background-color: #226CA6; color: #fff; }
+
+.small-button { color: #226CA6; }
+
+a { text-decoration: none; }
+a:hover { color: #6D6D6D; }

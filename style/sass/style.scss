@@ -1,0 +1,28 @@
+$bgColor: #fff;
+$brigthBlue: #30A2FC;
+$darkBlue : #226CA6;
+$hoverTextColor : #6D6D6D;
+$textColor: #181818;
+body{
+    background-color: $bgColor;
+    color: $textColor;
+}
+%button-shared{
+    border-radius: 20px;
+    border-color: $darkBlue;
+}
+.main-button{
+    @extend %button-shared;
+    background-color: $darkBlue;
+    color: $bgColor;
+}
+.small-button{
+    @extend %button-shared;
+    color: $darkBlue;
+}
+a{
+    text-decoration: none;
+    &:hover{
+        color: $hoverTextColor;
+    }
+}
