@@ -1,0 +1,20 @@
+.header-section {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    background: #ffffff;
+    height: 40px;
+}
+
+.navbar {
+    background: transparent !important;
+}
+
+.nav-link {
+    font-weight: 700;
+}
+
+.nav-link img{
+    height: 26px;
+}
