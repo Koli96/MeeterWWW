@@ -11,45 +11,15 @@ import Login from "./login";
 import Register from "./register";
 import Header from "./shared/header";
 import {checkAuth} from "./protected/validateLogin";
-
-// export function PrivateRoute({component: Component, authed, ...rest}) {
-// 	return (
-// 		<Route
-// 			{...rest}
-// 			render={props =>
-// 				authed === true ? (
-// 					<Component {...props} />
-// 				) : (
-// 					<Redirect to={{pathname: "/login", state: {from: props.location}}} />
-// 				)
-// 			}
-// 		/>
-// 	);
-// }
-
-// export function PublicRoute({component: Component, authed, ...rest}) {
-// 	console.log("PublicRoute", authed);
-// 	return (
-// 		<Route
-// 			{...rest}
-// 			render={props =>
-// 				authed === false ? (
-// 					<Component {...props} authed={authed} />
-// 				) : (
-// 					<Redirect to="/dashboard" />
-// 				)
-// 			}
-// 		/>
-// 	);
-// }
+import {logout} from "../actions/userActions";
 
 class App extends Component {
 	render() {
-		const {authed, userName} = this.props;
+		const {authed, userName, logout} = this.props;
 		return (
 			<Fragment>
 				<Router>
-					<Header authed={authed} userName={userName}>
+					<Header authed={authed} userName={userName} logout={logout}>
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route path="/login" component={Login} />
@@ -71,9 +41,14 @@ const mapStateToProps = state => ({
 	userName: state.user.userName
 });
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = dispatch => ({
+	logout: () => dispatch(logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
-	authed: PropTypes.bool,
-	userName: PropTypes.string
+	authed: PropTypes.bool.isRequired,
+	userName: PropTypes.string,
+	logout: PropTypes.func.isRequired
 };

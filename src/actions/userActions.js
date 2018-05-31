@@ -24,3 +24,5 @@ export function login(email, password) {
 		}
 	};
 }
+
+export const logout = () => ({type: DISAUTH, code: 0, message: null});

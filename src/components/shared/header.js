@@ -1,12 +1,12 @@
 import React, {Component, Fragment} from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 import logo from "../../assets/img/meeter-logo.png";
 import ExploreIcon from "../../assets/icons/explore.svg";
 import AccountIcon from "../../assets/icons/account.svg";
 
-export default class Header extends Component {
+class Header extends Component {
 	renderUserInfoSection() {
 		if (!this.props.authed) {
 			return (
@@ -25,7 +25,20 @@ export default class Header extends Component {
 			);
 		} else {
 			return (
-				<li className="nav-item navbar-text">Witaj {this.props.userName}</li>
+				<Fragment>
+					<Link className="nav-link" to="/account">
+						Witaj {this.props.userName}
+					</Link>
+					<li
+						className="nav-item nav-link"
+						style={{cursor: "pointer"}}
+						onClick={() => {
+							this.props.history.push("/");
+							this.props.logout();
+						}}>
+						WYLOGUJ
+					</li>
+				</Fragment>
 			);
 		}
 	}
@@ -70,5 +83,9 @@ export default class Header extends Component {
 Header.propTypes = {
 	children: PropTypes.node.isRequired,
 	authed: PropTypes.bool.isRequired,
-	userName: PropTypes.string
+	userName: PropTypes.string,
+	logout: PropTypes.func.isRequired,
+	history: PropTypes.any
 };
+
+export default withRouter(Header);
