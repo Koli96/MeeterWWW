@@ -1,12 +1,8 @@
-.main-section {
-    min-height: calc(100vh - 97px);
-}
-
 h1.page-title {
     text-align: center;
     font-size: 40px;
     font-weight: 700;
-    margin: 100px auto;
+    margin-bottom: 100px;
     width: 70%;
 }
 

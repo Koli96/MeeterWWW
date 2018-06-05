@@ -8,7 +8,7 @@ class Home extends React.Component {
 			<main className="main-section">
 				<div className="container">
 					<div className="row">
-						<h1 className=" col-10 mx-auto page-title">
+						<h1 className="col-10 mx-auto page-title">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit
 						</h1>
 						<img className="hero-img" src={heroImg} alt="Interview" />{" "}

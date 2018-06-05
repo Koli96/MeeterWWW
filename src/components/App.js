@@ -23,16 +23,18 @@ class App extends Component {
 			<Fragment>
 				<Router>
 					<Header authed={authed} userName={userName} logout={logout}>
-						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route path="/login" component={Login} />
-							<Route path="/register" component={Register} />
-							<Route path="/dashboard" component={checkAuth(Dashboard)} />
-							<Route path="/account" component={checkAuth(Account)} />
-							<Route path="/events/add" component={checkAuth(AddEvent)} />
-							<Route path="/events/list" component={checkAuth(EventList)} />
-							<Route path="/events/list/:id" component={checkAuth(EventView)} />
-						</Switch>
+						<div className='main-container mt-5'>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route path="/dashboard" component={checkAuth(Dashboard)} />
+                <Route path="/account" component={checkAuth(Account)} />
+                <Route path="/events/add" component={checkAuth(AddEvent)} />
+                <Route path="/events/list" component={checkAuth(EventList)} />
+                <Route path="/events/list/:id" component={checkAuth(EventView)} />
+              </Switch>
+						</div>
 					</Header>
 				</Router>
 

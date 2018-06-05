@@ -46,7 +46,7 @@ class EventList extends React.Component {
 	render() {
 		return (
 			<div className='container'>
-				<div className="row m-5">
+				<div className="row">
 					<div className="card-columns">
 						{this.renderCards()}
 					</div>
