@@ -22,7 +22,27 @@ export const reducer = (state = getInitialState(), action) => {
 				message: null
 			};
 		}
+		case userActions.REGISTRED: {
+			return {
+				...state,
+				authed: true,
+				request: false,
+				userName: action.userName,
+				code: action.code,
+				message: null
+			};
+		}
 		case userActions.LOIGN_REQUEST: {
+			return {
+				...state,
+				authed: false,
+				message: null,
+				userName: null,
+				code: 0,
+				request: true
+			};
+		}
+		case userActions.REGISTER_REQUEST: {
 			return {
 				...state,
 				authed: false,
