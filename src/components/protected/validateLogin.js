@@ -12,7 +12,13 @@ export function checkAuth(WrappedComponent) {
 		}
 
 		render() {
-			return <WrappedComponent {...this.props} />;
+			if(!this.props.authed)
+			{
+				return(<div />)
+			}
+			else {
+				return <WrappedComponent {...this.props} />;
+			}
 		}
 	}
 

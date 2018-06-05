@@ -58,7 +58,7 @@ class Header extends Component {
 								id="navbarNav">
 								<ul className="navbar-nav">
 									<li className="nav-item active">
-										<Link className="nav-link" to="/">
+										<Link className="nav-link" to="/events/list">
 											<img src={ExploreIcon} alt="explore" />
 										</Link>
 									</li>
