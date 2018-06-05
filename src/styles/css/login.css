@@ -1,8 +1,3 @@
-.login-section {
-    margin-top: 50px;
-    min-height: calc(100vh - 147px);
-}
-
 .login-form-container {
     box-sizing: border-box;
     padding: 40px 30px 50px 30px;

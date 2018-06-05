@@ -28,3 +28,7 @@ a:hover {
 * {
     font-family: Lato, sans-serif;
 }
+
+.main-container {
+    min-height: calc(100vh - 145px);
+}
