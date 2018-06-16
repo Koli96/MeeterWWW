@@ -4,7 +4,6 @@ import {getEvents} from "../../services/eventsService";
 import {Link, withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 
-
 class EventList extends React.Component {
 	constructor() {
 		super();
@@ -16,7 +15,6 @@ class EventList extends React.Component {
 	}
 
 	async componentDidMount() {
-
 		try {
 			const events = await getEvents();
 			this.setState({events: events.events});
@@ -30,14 +28,16 @@ class EventList extends React.Component {
 		const toReturn = [];
 
 		_.forEach(this.state.events, event => {
-			toReturn.push(<Link to={`/events/${event.id}`} key={event.id}>
-				<div className="card">
-					<div className="card-body">
-						<h5 className="card-title">{event.title}</h5>
-						<p className="card-text">{event.description}</p>
+			toReturn.push(
+				<Link to={`/events/${event.id}`} key={event.id}>
+					<div className="card">
+						<div className="card-body">
+							<h5 className="card-title">{event.title}</h5>
+							<p className="card-text">{event.description}</p>
+						</div>
 					</div>
-				</div>
-			</Link>);
+				</Link>
+			);
 		});
 
 		return toReturn;
@@ -45,13 +45,16 @@ class EventList extends React.Component {
 
 	render() {
 		return (
-			<div className='container'>
+			<div className="container">
 				<div className="row">
-					<div className="card-columns">
-						{this.renderCards()}
-					</div>
+					{this.state.events[0] ? (
+						<div className="card-columns">{this.renderCards()}</div>
+					) : (
+						<h3>Pobieram listę wydarzeń...</h3>
+					)}
 				</div>
-			</div>);
+			</div>
+		);
 	}
 }
 
