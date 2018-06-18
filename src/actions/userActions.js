@@ -4,7 +4,7 @@ import {RESPONSE_CODES} from "../common";
 
 export const LOG_IN = "log-in";
 export const REGISTRED = "registred";
-export const LOIGN_REQUEST = "login-request";
+export const LOGIN_REQUEST = "login-request";
 export const REGISTER_REQUEST = "register-request";
 export const DISAUTH = "disauth";
 export function register(firstName,lastName,email,password) {
@@ -26,11 +26,11 @@ export function register(firstName,lastName,email,password) {
 		}
 	};
 }
-export function login(email, password) {
+export function login(response) {
 	return async dispatch => {
-		dispatch({type: LOIGN_REQUEST});
+		dispatch({type: LOGIN_REQUEST});
 		try {
-			const data = await loginUser(email, password);
+			const data = await loginUser(response);
 			if (data.code === RESPONSE_CODES.OK) {
 				dispatch({type: LOG_IN, userName: data.userName, code: data.code});
 			} else {

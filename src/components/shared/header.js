@@ -17,11 +17,6 @@ class Header extends Component {
 							Logowanie
 						</Link>
 					</li>
-					<li className="nav-item">
-						<Link className="nav-link" to="/register">
-							Rejestracja
-						</Link>
-					</li>
 				</Fragment>
 			);
 		} else {

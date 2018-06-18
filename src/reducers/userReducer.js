@@ -32,7 +32,7 @@ export const reducer = (state = getInitialState(), action) => {
 				message: null
 			};
 		}
-		case userActions.LOIGN_REQUEST: {
+		case userActions.LOGIN_REQUEST: {
 			return {
 				...state,
 				authed: false,
