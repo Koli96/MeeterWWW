@@ -5,7 +5,7 @@ import heroImg from "../assets/img/interview.png";
 class Home extends React.Component {
 	render() {
 		return (
-			<main className="main-section">
+			<main className="main-section homeSection">
 				<div className="container">
 					<div className="row">
 						<h1 className="headerText">

@@ -49,6 +49,9 @@ background-color: #226CA6 !important;
 
 .main-container {
     min-height: calc(100vh - 145px);
+}
+.homeSection
+{
     background-color: #E0E0E0;
     background-image: -webkit-linear-gradient(30deg,#e6ffff, #FDFDFD , #e6ffff );
 }
