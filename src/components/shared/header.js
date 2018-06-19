@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from "react";
 import PropTypes from "prop-types";
 import {Link, withRouter} from "react-router-dom";
-
+import '../../styles/css/main.css'
 import logo from "../../assets/img/meeter-logo.png";
 import ExploreIcon from "../../assets/icons/explore.svg";
 import AccountIcon from "../../assets/icons/account.svg";
@@ -13,13 +13,13 @@ class Header extends Component {
 			return (
 				<Fragment>
 					<li className="nav-item">
-						<Link className="nav-link" to="/login">
-							Logowanie
+						<Link className="nav-link headerLink" to="/register">
+							Rejestracja
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="nav-link" to="/register">
-							Rejestracja
+						<Link className="nav-link loginBtn" to="/login">
+							Logowanie
 						</Link>
 					</li>
 				</Fragment>
@@ -58,18 +58,16 @@ class Header extends Component {
 								className="collapse navbar-collapse col-4 justify-content-end"
 								id="navbarNav">
 								<Nav>
-									<NavItem>
-										<Link className="nav-link" to="/events/list">
-											{" "}
-											<img src={ExploreIcon} alt="explore" />
+									<li className="nav-item">
+									<Link className="nav-link headerLink"  to="/events/list">
+											Wydarzenia
 										</Link>
-									</NavItem>
-									<NavItem>
-										<Link className="nav-link" to="/account">
-											{" "}
-											<img src={AccountIcon} alt="account" />
+									</li>
+									<li className="nav-item">
+						<Link className="nav-link headerLink"  to="/account">
+											Konto
 										</Link>
-									</NavItem>
+									</li>
 									{this.renderUserInfoSection()}
 								</Nav>
 							</Navbar.Collapse>

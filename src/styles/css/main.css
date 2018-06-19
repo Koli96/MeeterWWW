@@ -16,13 +16,32 @@ body {
 .small-button {
     color: #226CA6;
 }
-
 a {
+    color: black !important;
     text-decoration: none;
+    margin-left: 3%;
+
 }
 
-a:hover {
-    color: #6D6D6D;
+a.headerLink:hover {
+    color: #6D6D6D !important;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
+    border-bottom-color: black;
+    border-bottom-color: #226CA6;
+}
+a.loginBtn
+{
+border-style: solid;
+border-color: #226CA6;
+border-width: 2px;
+border-radius: 5px;
+color: #226CA6 !important;
+}
+a.loginBtn:hover
+{
+color: white !important;
+background-color: #226CA6 !important;
 }
 
 * {
