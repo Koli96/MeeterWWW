@@ -1,14 +1,9 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import {
-	Button,
-	FormGroup,
-	FormControl,
-	ControlLabel,
-	Alert
-} from "react-bootstrap";
+import {Alert} from "react-bootstrap";
 import {connect} from "react-redux";
 import {login} from "../actions/userActions";
+import GoogleLogin from "react-google-login";
 
 class Login extends Component {
 	constructor(props) {
@@ -42,10 +37,6 @@ class Login extends Component {
 		}
 	}
 
-	validateForm() {
-		return this.state.email.length > 0 && this.state.password.length > 0;
-	}
-
 	handleChange(event) {
 		this.setState({
 			[event.target.id]: event.target.value
@@ -69,33 +60,13 @@ class Login extends Component {
 									<p>{this.props.message}</p>
 								</Alert>
 							)}
-							<form onSubmit={this.handleSubmit}>
-								<FormGroup controlId="email" bsSize="large">
-									<ControlLabel>Email</ControlLabel>
-									<FormControl
-										autoFocus
-										type="email"
-										value={this.state.email}
-										onChange={this.handleChange}
-									/>
-								</FormGroup>
-								<FormGroup controlId="password" bsSize="large">
-									<ControlLabel>Password</ControlLabel>
-									<FormControl
-										value={this.state.password}
-										onChange={this.handleChange}
-										type="password"
-									/>
-								</FormGroup>
-								<Button
-									className="btn btn-outline-success submit-btn"
-									block
-									bsSize="large"
-									disabled={!this.validateForm() || this.props.request}
-									type="submit">
-									{this.props.request ? "Trwa logowanie..." : "Zaloguj"}
-								</Button>
-							</form>
+							<GoogleLogin
+								className="btn btn-success"
+								clientId="645131427897-m2ricc1950clmllapou09f15p6o5ctvi.apps.googleusercontent.com"
+								buttonText="Zaloguj się z Google"
+								onSuccess={this.props.login}
+								onFailure={this.props.login}
+							/>
 						</div>
 					</div>
 				</div>
@@ -112,7 +83,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	login: (email, password) => login(email, password)(dispatch)
+	login: response => login(response)(dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
