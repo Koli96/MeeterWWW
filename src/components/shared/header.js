@@ -6,6 +6,7 @@ import logo from "../../assets/img/meeter-logo.png";
 import ExploreIcon from "../../assets/icons/explore.svg";
 import AccountIcon from "../../assets/icons/account.svg";
 import {Nav, Navbar, NavItem} from "react-bootstrap";
+import {GoogleLogin} from "react-google-login";
 
 class Header extends Component {
 	renderUserInfoSection() {
@@ -13,9 +14,13 @@ class Header extends Component {
 			return (
 				<Fragment>
 					<li className="nav-item">
-						<Link className="nav-link" to="/login">
-							Logowanie
-						</Link>
+						<GoogleLogin
+							className="btn btn-success navbar-btn"
+							clientId="645131427897-m2ricc1950clmllapou09f15p6o5ctvi.apps.googleusercontent.com"
+							buttonText="Zaloguj się z Google"
+							onSuccess={this.props.login}
+							onFailure={this.props.login}
+						/>
 					</li>
 				</Fragment>
 			);
@@ -82,6 +87,7 @@ Header.propTypes = {
 	authed: PropTypes.bool.isRequired,
 	userName: PropTypes.string,
 	logout: PropTypes.func.isRequired,
+	login: PropTypes.func.isRequired,
 	history: PropTypes.any
 };
 
