@@ -16,13 +16,31 @@ body {
 .small-button {
     color: #226CA6;
 }
-
 a {
+    color: black !important;
     text-decoration: none;
-}
+    margin-left: 3%;
 
-a:hover {
-    color: #6D6D6D;
+}
+a.headerLink:hover {
+    color: #6D6D6D !important;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
+    border-bottom-color: black;
+    border-bottom-color: #226CA6;
+}
+a.loginBtn
+{
+border-style: solid;
+border-color: #226CA6;
+border-width: 2px;
+border-radius: 5px;
+color: #226CA6 !important;
+}
+a.loginBtn:hover
+{
+color: white !important;
+background-color: #226CA6 !important;
 }
 
 * {
@@ -32,3 +50,34 @@ a:hover {
 .main-container {
     min-height: calc(100vh - 145px);
 }
+.homeSection
+{
+    background-color: #E0E0E0;
+    background-image: -webkit-linear-gradient(30deg,#e6ffff, #FDFDFD , #e6ffff );
+}
+.headerText
+{
+    color: #226CA6;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+}
+.mainText
+{
+text-align: center;
+font-weight: bold;
+}
+.normalTetx
+{
+    text-align: justify;
+    line-height: 1.5em;
+}
+.animateImg {
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+  }
+  .animateImg:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
