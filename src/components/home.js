@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/css/main.css'
+import "../styles/css/main.css";
 import heroImg from "../assets/img/interview.png";
 
 class Home extends React.Component {
@@ -8,12 +8,13 @@ class Home extends React.Component {
 			<main className="main-section homeSection">
 				<div className="container">
 					<div className="row">
-						<h1 className="headerText">
-							Meeter
-						</h1>
+						<h1 className="headerText">Meeter</h1>
 						<h2 className="mainText">Bliżej ludzi, bliżej Ciebie!</h2>
-						
-						<img className="hero-img animateImg" src={heroImg} alt="Interview" />{" "}
+						<img
+							className="hero-img animateImg"
+							src={heroImg}
+							alt="Interview"
+						/>
 						{/*<p className="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, aspernatur, natus! Aspernatur cum est expedita minima placeat provident reiciendis.</p>*/}
 					</div>
 				</div>
