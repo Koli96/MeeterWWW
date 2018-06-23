@@ -29,7 +29,8 @@ export default class AddEvent extends Component {
 		this.handleDateChange = this.handleDateChange.bind(this);
 		this.toggleCal = this.toggleCal.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleDismiss = this.handleDismiss.bind(this);
+		this.handleErrDismiss = this.handleErrDismiss.bind(this);
+		this.handleAddDismiss = this.handleAddDismiss.bind(this);
 
 		this.state = {
 			name: "",
@@ -37,11 +38,13 @@ export default class AddEvent extends Component {
 			coordsX: 52.22499,
 			coordsY: 21.007861,
 			activityId: 1,
-			radius: 0,
-			expiryTime: moment(),
+			radius: 100,
+			expiryTime: moment().add(15, "minutes"),
 			openCal: false,
-			showAlert: false,
-			errorMsg: null
+			showErrAlert: false,
+			showAddAlert: false,
+			errorMsg: null,
+			added: null
 		};
 	}
 
@@ -65,8 +68,12 @@ export default class AddEvent extends Component {
 		this.toggleCal();
 	}
 
-	handleDismiss() {
-		this.setState({errorMsg: null, showAlert: false});
+	handleErrDismiss() {
+		this.setState({errorMsg: null, showErrAlert: false});
+	}
+
+	handleAddDismiss() {
+		this.setState({showAddAlert: false});
 	}
 
 	handleSubmit(e) {
@@ -90,12 +97,24 @@ export default class AddEvent extends Component {
 				radius,
 				expiryTime.toISOString()
 			)
-				.then(res => console.log(res))
+				.then(res => {
+					console.log(res);
+					this.setState({showAddAlert: true, added: res.data});
+					this.setState({
+						name: "",
+						desc: "",
+						coordsX: 52.22499,
+						coordsY: 21.007861,
+						activityId: 1,
+						radius: 0,
+						expiryTime: moment().add(15, "minutes")
+					});
+				})
 				.catch(e => {
-					this.setState({showAlert: true, errorMsg: e.message});
+					this.setState({showErrAlert: true, errorMsg: e.message});
 				});
 		} catch (e) {
-			this.setState({showAlert: true, errorMsg: e.message});
+			this.setState({showErrAlert: true, errorMsg: e.message});
 		}
 	}
 
@@ -106,12 +125,22 @@ export default class AddEvent extends Component {
 					<h1 className="mainText">Dodaj wydarzenie</h1>
 				</Row>
 				<Row style={{marginTop: "2em"}}>
-					{this.state.showAlert && (
+					{this.state.showErrAlert && (
 						<Row>
 							<Col style={{textAlign: "center"}} sm={9} md={7}>
-								<Alert bsStyle="danger" onDismiss={this.handleDismiss}>
+								<Alert bsStyle="danger" onDismiss={this.handleErrDismiss}>
 									<h4>Wystąpił błąd przy dodawaniu!</h4>
 									<p>Serwer zwrócił następujący błąd: {this.state.errorMsg}</p>
+								</Alert>
+							</Col>
+						</Row>
+					)}
+					{this.state.showAddAlert && (
+						<Row>
+							<Col style={{textAlign: "center"}} sm={9} md={7}>
+								<Alert bsStyle="success" onDismiss={this.handleAddDismiss}>
+									<h4>Dodano!</h4>
+									<p>Dodano wydarzenie: {this.state.added.name}!</p>
 								</Alert>
 							</Col>
 						</Row>
