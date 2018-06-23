@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import {Link, withRouter} from "react-router-dom";
 import "../../styles/css/main.css";
 import logo from "../../assets/img/meeter-logo.png";
-import {Nav, Navbar} from "react-bootstrap";
 import {GoogleLogin} from "react-google-login";
+import {Grid, Nav, Navbar, NavItem} from "react-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
 
 class Header extends Component {
 	renderUserInfoSection() {
@@ -46,31 +47,29 @@ class Header extends Component {
 		return (
 			<Fragment>
 				<header className="header-section">
-					<div className="container">
-						<Navbar className="navbar navbar-expand-lg navbar-light">
-							<Link className="navbar-brand col-4 offset-4" to="/">
-								<img className="d-flex mx-auto logo" src={logo} alt="" />
-							</Link>
-
-							<Navbar.Collapse
-								className="collapse navbar-collapse col-4 justify-content-end"
-								id="navbarNav">
+					<Grid>
+						<Navbar>
+							<Navbar.Header>
+								<Navbar.Brand>
+									<Link to="/">
+										<img className="d-flex mx-auto logo" src={logo} alt="" />
+									</Link>
+								</Navbar.Brand>
+								<Navbar.Toggle />
+							</Navbar.Header>
+							<Navbar.Collapse id="navbarNav">
 								<Nav>
-									<li className="nav-item">
-										<Link className="nav-link headerLink" to="/events/list">
-											Wydarzenia
-										</Link>
-									</li>
-									<li className="nav-item">
-										<Link className="nav-link headerLink" to="/account">
-											Konto
-										</Link>
-									</li>
+									<LinkContainer to="events/list">
+										<NavItem>Wydarzenia</NavItem>
+									</LinkContainer>
+									<LinkContainer to="/account">
+										<NavItem>Konto</NavItem>
+									</LinkContainer>
 									{this.renderUserInfoSection()}
 								</Nav>
 							</Navbar.Collapse>
 						</Navbar>
-					</div>
+					</Grid>
 				</header>
 				{this.props.children}
 			</Fragment>
