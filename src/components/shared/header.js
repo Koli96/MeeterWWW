@@ -1,10 +1,10 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import {Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "../../styles/css/main.css";
 import logo from "../../assets/img/meeter-logo.png";
-import {Nav, Navbar} from "react-bootstrap";
-import {GoogleLogin} from "react-google-login";
+import { Nav, Navbar } from "react-bootstrap";
+import { GoogleLogin } from "react-google-login";
 
 class Header extends Component {
 	renderUserInfoSection() {
@@ -13,7 +13,7 @@ class Header extends Component {
 				<Fragment>
 					<li className="nav-item">
 						<GoogleLogin
-							className="btn btn-success navbar-btn"
+						className="nav-link loginBtn"
 							clientId="645131427897-m2ricc1950clmllapou09f15p6o5ctvi.apps.googleusercontent.com"
 							buttonText="Zaloguj się z Google"
 							onSuccess={this.props.login}
@@ -25,17 +25,22 @@ class Header extends Component {
 		} else {
 			return (
 				<Fragment>
-					<Link className="nav-link" to="/account">
-						Witaj {this.props.userName}
-					</Link>
-					<li
-						className="nav-item nav-link"
-						style={{cursor: "pointer"}}
+	
+					<li className="nav-item">
+					<a
+						className="nav-link headerLink"
+						style={{ cursor: "pointer" }}
 						onClick={() => {
 							this.props.history.push("/");
 							this.props.logout();
 						}}>
 						WYLOGUJ
+					</a>
+					</li>
+					<li className="nav-item">
+					<Link className="nav-link headerLink" to="/account">
+						Witaj {this.props.userName}
+					</Link>
 					</li>
 				</Fragment>
 			);
@@ -47,18 +52,18 @@ class Header extends Component {
 			<Fragment>
 				<header className="header-section">
 					<div className="container">
-						<Navbar inverse collapseOnSelect>
-						<Navbar.Header>
-						<Navbar.Brand>
-							<Link className="navbar-brand col-4 offset-4" to="/">
-								<img className="d-flex mx-auto logo" src={logo} alt="" />
-							</Link>
-							</Navbar.Brand>
-    <Navbar.Toggle />
+						<Navbar inverse collapseOnSelect className="borderNone">
+							<Navbar.Header>
+								<Navbar.Brand>
+									<Link className="navbar-brand col-4 offset-4" to="/">
+										<img className="d-flex mx-auto logo" src={logo} alt="" />
+									</Link>
+								</Navbar.Brand>
+								<Navbar.Toggle className="navbarToggle" />
 							</Navbar.Header>
 
 							<Navbar.Collapse
-								className="collapse navbar-collapse col-4 justify-content-end"
+								className="collapse navbar-collapse borderNone col-4 justify-content-end"
 								id="navbarNav">
 								<Nav>
 									<li className="nav-item">
