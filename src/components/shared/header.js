@@ -47,10 +47,15 @@ class Header extends Component {
 			<Fragment>
 				<header className="header-section">
 					<div className="container">
-						<Navbar className="navbar navbar-expand-lg navbar-light">
+						<Navbar inverse collapseOnSelect>
+						<Navbar.Header>
+						<Navbar.Brand>
 							<Link className="navbar-brand col-4 offset-4" to="/">
 								<img className="d-flex mx-auto logo" src={logo} alt="" />
 							</Link>
+							</Navbar.Brand>
+    <Navbar.Toggle />
+							</Navbar.Header>
 
 							<Navbar.Collapse
 								className="collapse navbar-collapse col-4 justify-content-end"
