@@ -4,9 +4,10 @@ import {Link, withRouter} from "react-router-dom";
 import "../../styles/css/main.css";
 import logo from "../../assets/img/meeter-logo.png";
 import {Nav, Navbar} from "react-bootstrap";
-import {GoogleLogin} from "react-google-login";
+import {GoogleLogin, GoogleLogout } from "react-google-login";
 
 class Header extends Component {
+
 	renderUserInfoSection() {
 		if (!this.props.authed) {
 			return (
@@ -35,7 +36,11 @@ class Header extends Component {
 							this.props.history.push("/");
 							this.props.logout();
 						}}>
-						WYLOGUJ
+						<GoogleLogout
+							className="btn btn-danger navbar-btn"
+							buttonText="Logout"
+							onLogoutSuccess={this.props.logout}
+						></GoogleLogout>
 					</li>
 				</Fragment>
 			);

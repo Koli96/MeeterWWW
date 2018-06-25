@@ -83,3 +83,4 @@ export function loginFromCookies(email, token) {
 }
 
 export const logout = () => ({type: DISAUTH, code: 0, message: null});
+
