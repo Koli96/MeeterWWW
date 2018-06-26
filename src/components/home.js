@@ -10,12 +10,15 @@ class Home extends React.Component {
 				<Grid>
 					<Row>
 						<Col xs={8} xsOffset={2}>
-							<h1 className="page-title">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit
-							</h1>
+							<h1 className="headerText">Meeter</h1>
+							<h2 className="mainText">Bliżej ludzi, bliżej Ciebie!</h2>
 						</Col>
 						<Col xs={12}>
-							<img className="hero-img" src={heroImg} alt="Interview" />{" "}
+							<img
+								className="hero-img animateImg"
+								src={heroImg}
+								alt="Interview"
+							/>
 						</Col>
 					</Row>
 				</Grid>
