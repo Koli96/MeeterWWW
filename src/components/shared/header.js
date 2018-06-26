@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import {Link, withRouter} from "react-router-dom";
 import "../../styles/css/main.css";
 import logo from "../../assets/img/meeter-logo.png";
-import {GoogleLogin} from "react-google-login";
 import {Grid, Nav, Navbar, NavItem} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap";
+import {GoogleLogin, GoogleLogout} from "react-google-login";
 
 class Header extends Component {
 	renderUserInfoSection() {
@@ -36,7 +36,11 @@ class Header extends Component {
 							this.props.history.push("/");
 							this.props.logout();
 						}}>
-						WYLOGUJ
+						<GoogleLogout
+							className="btn btn-danger navbar-btn"
+							buttonText="Logout"
+							onLogoutSuccess={this.props.logout}
+						/>
 					</li>
 				</Fragment>
 			);
