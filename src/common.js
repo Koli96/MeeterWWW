@@ -3,3 +3,7 @@ export const RESPONSE_CODES = Object.freeze({
 	USER_DOESNT_EXIST: 400,
 	USER_CANT_REGISTERD: 401
 });
+
+export function checkIfGeolocationIsAvailable() {
+	return navigator.geolocation;
+}
