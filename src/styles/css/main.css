@@ -22,11 +22,21 @@ a {
     margin-left: 3%;
 
 }
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover
+{
+    background-color: white !important ;
+}
+.navbar-nav>.dropdown-toggle>.open>a, .navbar-nav>.dropdown-toggle>.open>a:hover, .navbar-nav>.dropdown-toggle>:hover
+{
+    background-color: white !important ;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
+    border-bottom-color: #226CA6;
+}
 a.headerLink:hover {
     color: #6D6D6D !important;
     border-bottom-style: solid;
     border-bottom-width: medium;
-    border-bottom-color: black;
     border-bottom-color: #226CA6;
 }
 .loginBtn

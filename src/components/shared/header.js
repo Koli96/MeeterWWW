@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import "../../styles/css/main.css";
 import logo from "../../assets/img/meeter-logo.png";
-import {Nav, Navbar} from "react-bootstrap";
-import {GoogleLogin, GoogleLogout } from "react-google-login";
+import { Nav, Navbar, NavDropdown, MenuItem } from "react-bootstrap";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 
 class Header extends Component {
 
@@ -14,7 +14,7 @@ class Header extends Component {
 				<Fragment>
 					<li className="nav-item">
 						<GoogleLogin
-						className="nav-link loginBtn"
+							className="nav-link loginBtn"
 							clientId="645131427897-m2ricc1950clmllapou09f15p6o5ctvi.apps.googleusercontent.com"
 							buttonText="Zaloguj się z Google"
 							onSuccess={this.props.login}
@@ -26,21 +26,21 @@ class Header extends Component {
 		} else {
 			return (
 				<Fragment>
-	
+
 					<li className="nav-item">
-					<a
-						className="nav-link headerLink"
-						style={{ cursor: "pointer" }}
-						onClick={() => {
-							this.props.history.push("/");
-							this.props.logout();
-						}}>
-=======
-						<GoogleLogout
-							className="btn btn-danger navbar-btn"
-							buttonText="Logout"
-							onLogoutSuccess={this.props.logout}
-						></GoogleLogout>
+						<a
+							className="nav-link headerLink"
+							style={{ cursor: "pointer" }}
+							onClick={() => {
+								this.props.history.push("/");
+								this.props.logout();
+							}}>
+							<GoogleLogout
+								className="nav-link loginBtn"
+								buttonText="Wyloguj"
+								onLogoutSuccess={this.props.logout}
+							></GoogleLogout>
+						</a>
 					</li>
 				</Fragment>
 			);
@@ -66,11 +66,19 @@ class Header extends Component {
 								className="collapse navbar-collapse borderNone col-4 justify-content-end"
 								id="navbarNav">
 								<Nav>
-									<li className="nav-item">
-										<Link className="nav-link headerLink" to="/events/list">
-											Wydarzenia
+									<NavDropdown  title="Wydarzenia" id="basic-nav-dropdown" 
+									className="headerLink dropdown-toggle">
+										<li className="nav-item">
+											<Link className="nav-link headerLink" to="/events/list">
+												Przeglądaj wydarzenia
 										</Link>
-									</li>
+										</li>
+										<li className="nav-item">
+											<Link className="nav-link headerLink" to="/events/add">
+												Dodaj wydarzenie
+										</Link>
+										</li>
+									</NavDropdown>
 									<li className="nav-item">
 										<Link className="nav-link headerLink" to="/account">
 											Konto
