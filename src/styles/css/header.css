@@ -4,13 +4,17 @@
 
 .logo {
     background: #ffffff;
-    height: 40px;
+    max-height: 100%;
 }
 
 .navbar {
     background: transparent !important;
 }
 
+.navbar-default{
+    margin-bottom: 0;
+    border: none;
+}
 .nav-link {
     font-weight: 700;
 }
