@@ -183,17 +183,24 @@ class EventList extends React.Component {
 		return (
 			<div className="container">
 				{this.renderPositionModal()}
-				<div className="row">
-					{this.state.events ? (
-						this.state.events[0] ? (
-							<div className="card-columns">{this.renderCards()}</div>
+				{this.state.error ? (
+					<div className="row">
+						<h3>Wystąpił błąd!</h3>
+						<p>{this.state.error}</p>
+					</div>
+				) : (
+					<div className="row">
+						{this.state.events ? (
+							this.state.events[0] ? (
+								<div className="card-columns">{this.renderCards()}</div>
+							) : (
+								<h3>Nie ma żadnych wydarzeń w pobliżu</h3>
+							)
 						) : (
-							<h3>Nie ma żadnych wydarzeń w pobliżu</h3>
-						)
-					) : (
-						<h3>Pobieram listę wydarzeń...</h3>
-					)}
-				</div>
+							<h3>Pobieram listę wydarzeń...</h3>
+						)}
+					</div>
+				)}
 			</div>
 		);
 	}
