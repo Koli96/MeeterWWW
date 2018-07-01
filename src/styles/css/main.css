@@ -20,7 +20,7 @@ body {
 a {
     color: black !important;
     text-decoration: none;
-    margin-left: 3%;
+    /*margin-left: 3%;*/
 
 }
 
@@ -120,4 +120,8 @@ a.headerLink:hover {
 }
 .navbar{
     margin-bottom: 0 !important;
+}
+.loginBtnContainer{
+    padding-bottom: 5px !important;
+    padding-top: 5px !important;
 }

@@ -4,14 +4,14 @@ import {Link, withRouter} from "react-router-dom";
 import "../../styles/css/main.css";
 import logo from "../../assets/img/meeter-logo.png";
 import {GoogleLogin, GoogleLogout} from "react-google-login";
-import {Nav, Navbar, NavDropdown, MenuItem} from "react-bootstrap";
+import {Grid, Nav, Navbar, NavDropdown} from "react-bootstrap";
 
 class Header extends Component {
 	renderUserInfoSection() {
 		if (!this.props.authed) {
 			return (
 				<Fragment>
-					<li className="nav-item">
+					<li className="nav-item loginBtnContainer">
 						<GoogleLogin
 							className="nav-link loginBtn"
 							clientId="645131427897-m2ricc1950clmllapou09f15p6o5ctvi.apps.googleusercontent.com"
@@ -27,7 +27,7 @@ class Header extends Component {
 				<Fragment>
 					<li className="nav-item">
 						<a
-							className="nav-link headerLink"
+							className="nav-link loginBtnContainer"
 							style={{cursor: "pointer"}}
 							onClick={() => {
 								this.props.history.push("/");
@@ -40,6 +40,7 @@ class Header extends Component {
 							/>
 						</a>
 					</li>
+					<Navbar.Text>Witaj, {this.props.userName}</Navbar.Text>
 				</Fragment>
 			);
 		}
@@ -49,7 +50,7 @@ class Header extends Component {
 		return (
 			<Fragment>
 				<header className="header-section">
-					<div className="container">
+					<Grid>
 						<Navbar inverse collapseOnSelect className="borderNone">
 							<Navbar.Header>
 								<Navbar.Brand>
@@ -67,14 +68,14 @@ class Header extends Component {
 									<NavDropdown
 										title="Wydarzenia"
 										id="basic-nav-dropdown"
-										className="headerLink dropdown-toggle">
+										className="headerLink dropdown-toggle nav-link">
 										<li className="nav-item">
-											<Link className="nav-link headerLink" to="/events/list">
+											<Link className="nav-link" to="/events/list">
 												Przeglądaj wydarzenia
 											</Link>
 										</li>
 										<li className="nav-item">
-											<Link className="nav-link headerLink" to="/events/add">
+											<Link className="nav-link" to="/events/add">
 												Dodaj wydarzenie
 											</Link>
 										</li>
@@ -88,7 +89,7 @@ class Header extends Component {
 								</Nav>
 							</Navbar.Collapse>
 						</Navbar>
-					</div>
+					</Grid>
 				</header>
 				{this.props.children}
 			</Fragment>
