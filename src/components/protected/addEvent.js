@@ -13,10 +13,11 @@ import Slider, {createSliderWithTooltip} from "rc-slider";
 import moment from "moment";
 import "moment/locale/pl.js";
 import DatePicker from "react-datepicker";
-
+import "../../styles/css/main.css"
 import "rc-slider/assets/index.css";
 import "react-datepicker/dist/react-datepicker.css";
 import {addEvent} from "../../services/eventsService";
+import 'react-datepicker/dist/react-datepicker.css';
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
@@ -122,12 +123,12 @@ export default class AddEvent extends Component {
 		return (
 			<div className="container">
 				<Row>
-					<h1 className="mainText">Dodaj wydarzenie</h1>
+					<h1 className="headerText">Dodaj wydarzenie</h1>
 				</Row>
 				<Row style={{marginTop: "2em"}}>
 					{this.state.showErrAlert && (
 						<Row>
-							<Col style={{textAlign: "center"}} sm={9} md={7}>
+							<Col style={{textAlign: "center"}} sm={12} md={12}>
 								<Alert bsStyle="danger" onDismiss={this.handleErrDismiss}>
 									<h4>Wystąpił błąd przy dodawaniu!</h4>
 									<p>Serwer zwrócił następujący błąd: {this.state.errorMsg}</p>
@@ -137,7 +138,7 @@ export default class AddEvent extends Component {
 					)}
 					{this.state.showAddAlert && (
 						<Row>
-							<Col style={{textAlign: "center"}} sm={9} md={7}>
+							<Col style={{textAlign: "center"}} sm={12} md={12}>
 								<Alert bsStyle="success" onDismiss={this.handleAddDismiss}>
 									<h4>Dodano!</h4>
 									<p>Dodano wydarzenie: {this.state.added.name}!</p>
@@ -147,7 +148,7 @@ export default class AddEvent extends Component {
 					)}
 					<Form horizontal onSubmit={this.handleSubmit}>
 						<FormGroup controlId="formName">
-							<Col sm={4} componentClass={ControlLabel}>
+							<Col sm={5} componentClass={ControlLabel}>
 								Nazwa wydarzenia
 							</Col>
 							<Col md={3} sm={5}>
@@ -163,7 +164,7 @@ export default class AddEvent extends Component {
 							</Col>
 						</FormGroup>
 						<FormGroup controlId="formDesc">
-							<Col sm={4} componentClass={ControlLabel}>
+							<Col sm={5} componentClass={ControlLabel}>
 								Opis wydarzenia
 							</Col>
 							<Col md={3} sm={5}>
@@ -182,7 +183,7 @@ export default class AddEvent extends Component {
 							</Col>
 						</FormGroup>
 						<FormGroup controlId="formMap">
-							<Col sm={4} componentClass={ControlLabel}>
+							<Col sm={5} componentClass={ControlLabel}>
 								Wybierz miejsce
 							</Col>
 							<Col md={3} sm={5}>
@@ -190,7 +191,7 @@ export default class AddEvent extends Component {
 							</Col>
 						</FormGroup>
 						<FormGroup controlId="formCat">
-							<Col sm={4} componentClass={ControlLabel}>
+							<Col sm={5} componentClass={ControlLabel}>
 								Kategoria
 							</Col>
 							<Col md={3} sm={5}>
@@ -206,10 +207,10 @@ export default class AddEvent extends Component {
 							</Col>
 						</FormGroup>
 						<FormGroup controlId="formRadius">
-							<Col sm={4} componentClass={ControlLabel}>
+							<Col sm={5} componentClass={ControlLabel}>
 								Zasięg wydarzenia (m)
 							</Col>
-							<Col md={5} sm={7}>
+							<Col md={3} sm={5}>
 								<SliderWithTooltip
 									style={{marginTop: "0.5em"}}
 									onChange={this.hanldeSliderChange}
@@ -221,29 +222,30 @@ export default class AddEvent extends Component {
 							</Col>
 						</FormGroup>
 						<FormGroup controlId="formRadius">
-							<Col sm={4} componentClass={ControlLabel}>
+							<Col sm={5} componentClass={ControlLabel}>
 								Data końca
 							</Col>
-							<Col>
+							<Col sm={5}>
 								<Button onClick={this.toggleCal}>
 									{this.state.expiryTime.format("YYYY-MM-DD HH:mm")}
 								</Button>
 								{this.state.openCal && (
 									<DatePicker
-										withPortal
-										inline
-										selected={this.state.expiryTime}
-										onChange={this.handleDateChange}
-										minTime={moment().add(15, "minutes")}
-										maxTime={moment()
-											.hours(23)
-											.minutes(45)}
-										minDate={moment()}
-										showTimeSelect
-										timeFormat="HH:mm"
-										timeIntervals={15}
-										dateFormat="LLL"
-										timeCaption="Godzina"
+										 withPortal
+										 inline
+										 selected={this.state.expiryTime}
+										 onChange={this.handleDateChange}
+										 minTime={moment().add(15, "minutes")}
+										 maxTime={moment()
+										 	.hours(23)
+										 	.minutes(45)}
+										 minDate={moment()}
+										 showTimeSelect
+										 
+										 timeFormat="HH:mm"
+										 timeIntervals={15}
+										 dateFormat="LLL"
+										 timeCaption="Godzina"
 									/>
 								)}
 							</Col>
