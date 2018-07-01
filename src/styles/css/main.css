@@ -22,6 +22,20 @@ a {
     margin-left: 3%;
 
 }
+a.accountLink
+{
+    padding: 5vh;
+    margin: 5vh;
+    display: block;
+    float: left;
+    border-style: solid;
+    border-color: #226CA6;
+    border-radius: 5px;
+}
+a.accountLink:hover
+{
+    text-decoration: none;
+}
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
     padding-left: 0;
     padding-right: 0;
@@ -55,7 +69,7 @@ border-radius: 5px;
 color: #226CA6 !important;
 background-color: white;
 }
-.loginBtn:hover
+.loginBtn:hover, .accountLink:hover
 {
 color: white !important;
 background-color: #226CA6 !important;
